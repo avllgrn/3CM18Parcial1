@@ -22,6 +22,14 @@ int main(void){
     Punto B;//Se construye objeto tipo Punto
     Punto C;//Se construye objeto tipo Punto
 
+    cout << "A ocupa\t  "<< sizeof(A) << " bytes" << endl;//Memoria reservada para objeto
+    cout << "B ocupa\t  "<< sizeof(B) << " bytes" << endl;//Memoria reservada para objeto
+    cout << "C ocupa\t  "<< sizeof(C) << " bytes" << endl;//Memoria reservada para objeto
+    cout<<endl<<endl;
+    system("pause");
+    system("cls");
+
+
     cout<<"A";
     A.muestraTusDatos();//Se muestran los atributos del objeto (con datos basura)
     cout<<endl<<endl;
@@ -34,15 +42,12 @@ int main(void){
     system("pause");
     cout<<endl<<endl;
 
-    cout<<"A"<<endl;
-    A.pideTusDatos();//Se solicitan al usuario atributos del objeto
-    cout<<endl<<endl;
-    cout<<"B"<<endl;
-    B.pideTusDatos();//Se solicitan al usuario atributos del objeto
-    cout<<endl<<endl;
-    cout<<"C"<<endl;
-    C.pideTusDatos();//Se solicitan al usuario atributos del objeto
-    cout<<endl<<endl;
+    A.x = 1.6;      //Asignacion de una dato a atributo de objeto
+    A.y = 2.8;      //Asignacion de una dato a atributo de objeto
+    B.x = 3.6;      //Asignacion de una dato a atributo de objeto
+    B.y = 4.8;      //Asignacion de una dato a atributo de objeto
+    C.x = 5.6;      //Asignacion de una dato a atributo de objeto
+    C.y = 6.8;      //Asignacion de una dato a atributo de objeto
 
     cout<<"A";
     A.muestraTusDatos();//Se muestran los atributos del objeto (ya no hay basura)
