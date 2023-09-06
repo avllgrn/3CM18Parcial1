@@ -33,11 +33,11 @@ int main(void){
     system("cls");
 
 
-    cout << "P = ("<<P.x<<", "<<P.y<<")"<< endl;//Se muestran los atributos del objeto (con datos basura)
+    cout << "P = ("<<P.x<<", "<<P.y<<")"<< endl;                //Se muestran los atributos del objeto (con datos basura)
     cout<<endl<<endl;
-    cout << "C = "<<C.real<<" + "<<C.imaginario<<"i"<<endl;//Se muestran los atributos del objeto (con datos basura)
+    cout << "C = "<<C.real<<" + "<<C.imaginario<<"i"<<endl;     //Se muestran los atributos del objeto (con datos basura)
     cout<<endl<<endl;
-    cout << "F = "<< F.numerador<<" / "<<F.denominador<<endl;//Se muestran los atributos del objeto (con datos basura)
+    cout << "F = "<< F.numerador<<" / "<<F.denominador<<endl;   //Se muestran los atributos del objeto (con datos basura)
     cout<<endl<<endl;
     system("pause");
     cout<<endl<<endl;
@@ -49,11 +49,47 @@ int main(void){
     F.numerador = 9;    //Asignacion de una dato a atributo de objeto
     F.denominador = 10; //Asignacion de una dato a atributo de objeto
 
-    cout << "P = ("<<P.x<<", "<<P.y<<")"<< endl;//Se muestran los atributos del objeto (ya no hay basura)
+    cout << "P = ("<<P.x<<", "<<P.y<<")"<< endl;                //Se muestran los atributos del objeto (ya no hay basura)
     cout<<endl<<endl;
-    cout << "C = "<<C.real<<" + "<<C.imaginario<<"i"<<endl;//Se muestran los atributos del objeto (ya no hay basura)
+    cout << "C = "<<C.real<<" + "<<C.imaginario<<"i"<<endl;     //Se muestran los atributos del objeto (ya no hay basura)
     cout<<endl<<endl;
-    cout << "F = "<< F.numerador<<" / "<<F.denominador<<endl;//Se muestran los atributos del objeto (ya no hay basura)
+    cout << "F = "<< F.numerador<<" / "<<F.denominador<<endl;   //Se muestran los atributos del objeto (ya no hay basura)
+    cout<<endl<<endl;
+    system("pause");
+    system("cls");
+
+    Punto* ptrPunto;        //Declaracion de apuntador a un objeto tipo Punto
+    Complejo* ptrComplejo;  //Declaracion de apuntador a un objeto tipo Complejo
+    Fraccion* ptrFraccion;  //Declaracion de apuntador a un objeto tipo Fraccion
+
+    cout << "ptrPunto ocupa    "<< sizeof(ptrPunto) << " bytes" << endl;    //Memoria reservada para apuntador a un objeto tipo Punto
+    cout << "ptrComplejo ocupa "<< sizeof(ptrComplejo) << " bytes" << endl; //Memoria reservada para apuntador a un objeto tipo Complejo
+    cout << "ptrFraccion ocupa "<< sizeof(ptrFraccion) << " bytes" << endl; //Memoria reservada para apuntador a un objeto tipo Fraccion
+    cout<<endl<<endl;
+
+    cout << "ptrPunto    = "<< ptrPunto << endl;    //Contenido (direccion basura) en el apuntador a un objeto tipo Punto
+    cout << "ptrComplejo = "<< ptrComplejo << endl; //Contenido (direccion basura) en el apuntador a un objeto tipo Complejo
+    cout << "ptrFraccion = "<< ptrFraccion << endl; //Contenido (direccion basura) en el apuntador a un objeto tipo Fraccion
+    cout<<endl<<endl;
+    system("pause");
+    system("cls");
+
+    ptrPunto = &P;      //Asignacion de la direccion de un objeto tipo Punto a un apuntador Punto*
+    ptrComplejo = &C;   //Asignacion de la direccion de un objeto tipo Complejoa un apuntador Complejo*
+    ptrFraccion = &F;   //Asignacion de la direccion de un objeto tipo Fracciona un apuntador Fraccion*
+
+    cout << "ptrPunto    = "<< ptrPunto << endl;    //Contenido (ya no hay basura) en el apuntador a un objeto tipo Punto
+    cout << "ptrComplejo = "<< ptrComplejo << endl; //Contenido (ya no hay basura) en el apuntador a un objeto tipo Complejo
+    cout << "ptrFraccion = "<< ptrFraccion << endl; //Contenido (ya no hay basura) en el apuntador a un objeto tipo Fraccion
+    cout<<endl<<endl;
+    system("pause");
+    cout<<endl<<endl;
+
+    cout << "P = ("<<P.x<<", "<<P.y<<")"<< endl;                //Se muestran los atributos del objeto, usando un apuntador Punto*
+    cout<<endl<<endl;
+    cout << "C = "<<C.real<<" + "<<C.imaginario<<"i"<<endl;     //Se muestran los atributos del objeto, usando un apuntador Complejo*
+    cout<<endl<<endl;
+    cout << "F = "<< F.numerador<<" / "<<F.denominador<<endl;   //Se muestran los atributos del objeto, usando un apuntador Fraccion*
     cout<<endl<<endl;
 
     return 0;
