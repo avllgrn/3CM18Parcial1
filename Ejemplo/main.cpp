@@ -85,11 +85,11 @@ int main(void){
     system("pause");
     cout<<endl<<endl;
 
-    cout << "P = ("<<P.x<<", "<<P.y<<")"<< endl;                //Se muestran los atributos del objeto, usando un apuntador Punto*
+    cout << "P = ("<<ptrPunto->x<<", "<<ptrPunto->y<<")"<< endl;                //Se muestran los atributos del objeto, usando un apuntador Punto*
     cout<<endl<<endl;
-    cout << "C = "<<C.real<<" + "<<C.imaginario<<"i"<<endl;     //Se muestran los atributos del objeto, usando un apuntador Complejo*
+    cout << "C = "<<ptrComplejo->real<<" + "<<ptrComplejo->imaginario<<"i"<<endl;     //Se muestran los atributos del objeto, usando un apuntador Complejo*
     cout<<endl<<endl;
-    cout << "F = "<< F.numerador<<" / "<<F.denominador<<endl;   //Se muestran los atributos del objeto, usando un apuntador Fraccion*
+    cout << "F = "<< ptrFraccion->numerador<<" / "<<ptrFraccion->denominador<<endl;   //Se muestran los atributos del objeto, usando un apuntador Fraccion*
     cout<<endl<<endl;
 
     return 0;
