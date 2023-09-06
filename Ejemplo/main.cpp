@@ -6,59 +6,16 @@ class Punto{
 public:
     double x;
     double y;
+    void pideTusDatos(void);
+    void muestraTusDatos(void);
 };
-
-int main(void){
-    Punto A;//Se construye objeto tipo Punto
-    Punto B;//Se construye objeto tipo Punto
-    Punto C;//Se construye objeto tipo Punto
-
-    cout<<"A";
-    cout<<"("<<A.x<<", "<<A.y<<")"<<endl;//Se muestran los atributos del objeto (con datos basura)
-    cout<<endl<<endl;
-    cout<<"B";
-    cout<<"("<<B.x<<", "<<B.y<<")"<<endl;//Se muestran los atributos del objeto (con datos basura)
-    cout<<endl<<endl;
-    cout<<"C";
-    cout<<"("<<C.x<<", "<<C.y<<")"<<endl;//Se muestran los atributos del objeto (con datos basura)
-    cout<<endl<<endl;
-    system("pause");
-    cout<<endl<<endl;
-
-    cout<<"A"<<endl;
-    cout<<"Dame mi x ";cin>>A.x;//Se solicitan al usuario un atributo del objeto
-    cout<<"Dame mi y ";cin>>A.y;//Se solicitan al usuario un atributo del objeto
-    cout<<endl<<endl;
-    cout<<"B"<<endl;
-    cout<<"Dame mi x ";cin>>B.x;//Se solicitan al usuario un atributo del objeto
-    cout<<"Dame mi y ";cin>>B.y;//Se solicitan al usuario un atributo del objeto
-    cout<<endl<<endl;
-    cout<<"C"<<endl;
-    cout<<"Dame mi x ";cin>>C.x;//Se solicitan al usuario un atributo del objeto
-    cout<<"Dame mi y ";cin>>C.y;//Se solicitan al usuario un atributo del objeto
-    cout<<endl<<endl;
-
-    cout<<"A";
-    cout<<"("<<A.x<<", "<<A.y<<")"<<endl;//Se muestran los atributos del objeto (ya no hay basura)
-    cout<<endl<<endl;
-    cout<<"B";
-    cout<<"("<<B.x<<", "<<B.y<<")"<<endl;//Se muestran los atributos del objeto (ya no hay basura)
-    cout<<endl<<endl;
-    cout<<"C";
-    cout<<"("<<C.x<<", "<<C.y<<")"<<endl;//Se muestran los atributos del objeto (ya no hay basura)
-    cout<<endl<<endl;
-
-    return 0;
+void Punto::pideTusDatos(void){
+    cout<<"Dame mi x ";cin>>x;
+    cout<<"Dame mi y ";cin>>y;
 }
-#include <iostream>
-#include <stdlib.h>
-using namespace std;
-
-class Punto{
-public:
-    double x;
-    double y;
-};
+void Punto::muestraTusDatos(void){
+    cout<<"("<<x<<", "<<y<<")"<<endl;
+}
 
 int main(void){
     Punto A;//Se construye objeto tipo Punto
@@ -66,38 +23,35 @@ int main(void){
     Punto C;//Se construye objeto tipo Punto
 
     cout<<"A";
-    cout<<"("<<A.x<<", "<<A.y<<")"<<endl;//Se muestran los atributos del objeto (con datos basura)
+    A.muestraTusDatos();//Se muestran los atributos del objeto (con datos basura)
     cout<<endl<<endl;
     cout<<"B";
-    cout<<"("<<B.x<<", "<<B.y<<")"<<endl;//Se muestran los atributos del objeto (con datos basura)
+    B.muestraTusDatos();//Se muestran los atributos del objeto (con datos basura)
     cout<<endl<<endl;
     cout<<"C";
-    cout<<"("<<C.x<<", "<<C.y<<")"<<endl;//Se muestran los atributos del objeto (con datos basura)
+    C.muestraTusDatos();//Se muestran los atributos del objeto (con datos basura)
     cout<<endl<<endl;
     system("pause");
     cout<<endl<<endl;
 
     cout<<"A"<<endl;
-    cout<<"Dame mi x ";cin>>A.x;//Se solicitan al usuario un atributo del objeto
-    cout<<"Dame mi y ";cin>>A.y;//Se solicitan al usuario un atributo del objeto
+    A.pideTusDatos();//Se solicitan al usuario atributos del objeto
     cout<<endl<<endl;
     cout<<"B"<<endl;
-    cout<<"Dame mi x ";cin>>B.x;//Se solicitan al usuario un atributo del objeto
-    cout<<"Dame mi y ";cin>>B.y;//Se solicitan al usuario un atributo del objeto
+    B.pideTusDatos();//Se solicitan al usuario atributos del objeto
     cout<<endl<<endl;
     cout<<"C"<<endl;
-    cout<<"Dame mi x ";cin>>C.x;//Se solicitan al usuario un atributo del objeto
-    cout<<"Dame mi y ";cin>>C.y;//Se solicitan al usuario un atributo del objeto
+    C.pideTusDatos();//Se solicitan al usuario atributos del objeto
     cout<<endl<<endl;
 
     cout<<"A";
-    cout<<"("<<A.x<<", "<<A.y<<")"<<endl;//Se muestran los atributos del objeto (ya no hay basura)
+    A.muestraTusDatos();//Se muestran los atributos del objeto (ya no hay basura)
     cout<<endl<<endl;
     cout<<"B";
-    cout<<"("<<B.x<<", "<<B.y<<")"<<endl;//Se muestran los atributos del objeto (ya no hay basura)
+    B.muestraTusDatos();//Se muestran los atributos del objeto (ya no hay basura)
     cout<<endl<<endl;
     cout<<"C";
-    cout<<"("<<C.x<<", "<<C.y<<")"<<endl;//Se muestran los atributos del objeto (ya no hay basura)
+    C.muestraTusDatos();//Se muestran los atributos del objeto (ya no hay basura)
     cout<<endl<<endl;
 
     return 0;
