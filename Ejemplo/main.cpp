@@ -2,95 +2,42 @@
 #include <stdlib.h>
 using namespace std;
 
-class Punto{
+class Nodo{
 public:
-    double x;
-    double y;
-};
-
-class Complejo{
-public:
-    double real;
-    double imaginario;
-};
-
-class Fraccion{
-public:
-    int numerador;
-    int denominador;
+    int dato;
+    Nodo* inferior;
+    Nodo(void){
+        cout<<"Nodo construido..."<<endl;
+    };
+    ~Nodo(void){
+        cout<<"Nodo destruido..."<<endl;
+    };
 };
 
 int main(void){
-    Punto P;    //Se construye objeto tipo Punto
-    Complejo C; //Se construye objeto tipo Complejo
-    Fraccion F; //Se construye objeto tipo Fraccion
+    cout<<"Inicio del main"<<endl<<endl;
 
-    cout << "P ocupa\t  "<< sizeof(P) << " bytes" << endl;//Memoria reservada para objeto
-    cout << "C ocupa\t  "<< sizeof(C) << " bytes" << endl;//Memoria reservada para objeto
-    cout << "F ocupa\t  "<< sizeof(F) << " bytes" << endl;//Memoria reservada para objeto
-    cout<<endl<<endl;
+    Nodo A, B, C, D;    //Se construyen Nodos con basura
     system("pause");
     system("cls");
 
+    cout<<"Nodos con contenido basura:"<<endl<<endl;
 
-    cout << "P = ("<<P.x<<", "<<P.y<<")"<< endl;                //Se muestran los atributos del objeto (con datos basura)
-    cout<<endl<<endl;
-    cout << "C = "<<C.real<<" + "<<C.imaginario<<"i"<<endl;     //Se muestran los atributos del objeto (con datos basura)
-    cout<<endl<<endl;
-    cout << "F = "<< F.numerador<<" / "<<F.denominador<<endl;   //Se muestran los atributos del objeto (con datos basura)
-    cout<<endl<<endl;
-    system("pause");
-    cout<<endl<<endl;
+    cout<<"A.dato = "<<A.dato<<endl
+        <<"A.inferior = "<<A.inferior<<endl<<endl;
 
-    P.x = 1.2;          //Asignacion de una dato a atributo de objeto
-    P.y = 3.4;          //Asignacion de una dato a atributo de objeto
-    C.real = 5.6;       //Asignacion de una dato a atributo de objeto
-    C.imaginario = 7.8; //Asignacion de una dato a atributo de objeto
-    F.numerador = 9;    //Asignacion de una dato a atributo de objeto
-    F.denominador = 10; //Asignacion de una dato a atributo de objeto
+    cout<<"B.dato = "<<B.dato<<endl
+        <<"B.inferior = "<<B.inferior<<endl<<endl;
 
-    cout << "P = ("<<P.x<<", "<<P.y<<")"<< endl;                //Se muestran los atributos del objeto (ya no hay basura)
-    cout<<endl<<endl;
-    cout << "C = "<<C.real<<" + "<<C.imaginario<<"i"<<endl;     //Se muestran los atributos del objeto (ya no hay basura)
-    cout<<endl<<endl;
-    cout << "F = "<< F.numerador<<" / "<<F.denominador<<endl;   //Se muestran los atributos del objeto (ya no hay basura)
-    cout<<endl<<endl;
+    cout<<"C.dato = "<<C.dato<<endl
+        <<"C.inferior = "<<C.inferior<<endl<<endl;
+
+    cout<<"D.dato = "<<D.dato<<endl
+        <<"D.inferior = "<<D.inferior<<endl<<endl;
+
     system("pause");
     system("cls");
-
-    Punto* ptrPunto;        //Declaracion de apuntador a un objeto tipo Punto
-    Complejo* ptrComplejo;  //Declaracion de apuntador a un objeto tipo Complejo
-    Fraccion* ptrFraccion;  //Declaracion de apuntador a un objeto tipo Fraccion
-
-    cout << "ptrPunto ocupa    "<< sizeof(ptrPunto) << " bytes" << endl;    //Memoria reservada para apuntador a un objeto tipo Punto
-    cout << "ptrComplejo ocupa "<< sizeof(ptrComplejo) << " bytes" << endl; //Memoria reservada para apuntador a un objeto tipo Complejo
-    cout << "ptrFraccion ocupa "<< sizeof(ptrFraccion) << " bytes" << endl; //Memoria reservada para apuntador a un objeto tipo Fraccion
-    cout<<endl<<endl;
-
-    cout << "ptrPunto    = "<< ptrPunto << endl;    //Contenido (direccion basura) en el apuntador a un objeto tipo Punto
-    cout << "ptrComplejo = "<< ptrComplejo << endl; //Contenido (direccion basura) en el apuntador a un objeto tipo Complejo
-    cout << "ptrFraccion = "<< ptrFraccion << endl; //Contenido (direccion basura) en el apuntador a un objeto tipo Fraccion
-    cout<<endl<<endl;
-    system("pause");
-    system("cls");
-
-    ptrPunto = &P;      //Asignacion de la direccion de un objeto tipo Punto a un apuntador Punto*
-    ptrComplejo = &C;   //Asignacion de la direccion de un objeto tipo Complejoa un apuntador Complejo*
-    ptrFraccion = &F;   //Asignacion de la direccion de un objeto tipo Fracciona un apuntador Fraccion*
-
-    cout << "ptrPunto    = "<< ptrPunto << endl;    //Contenido (ya no hay basura) en el apuntador a un objeto tipo Punto
-    cout << "ptrComplejo = "<< ptrComplejo << endl; //Contenido (ya no hay basura) en el apuntador a un objeto tipo Complejo
-    cout << "ptrFraccion = "<< ptrFraccion << endl; //Contenido (ya no hay basura) en el apuntador a un objeto tipo Fraccion
-    cout<<endl<<endl;
-    system("pause");
-    cout<<endl<<endl;
-
-    cout << "P = ("<<ptrPunto->x<<", "<<ptrPunto->y<<")"<< endl;                //Se muestran los atributos del objeto, usando un apuntador Punto*
-    cout<<endl<<endl;
-    cout << "C = "<<ptrComplejo->real<<" + "<<ptrComplejo->imaginario<<"i"<<endl;     //Se muestran los atributos del objeto, usando un apuntador Complejo*
-    cout<<endl<<endl;
-    cout << "F = "<< ptrFraccion->numerador<<" / "<<ptrFraccion->denominador<<endl;   //Se muestran los atributos del objeto, usando un apuntador Fraccion*
-    cout<<endl<<endl;
+    cout<<"Fin del main"<<endl<<endl;//Se destruyen los objetos
 
     return 0;
 }
