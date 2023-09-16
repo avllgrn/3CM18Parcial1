@@ -7,6 +7,8 @@ public:
     int dato;
     Nodo* inferior;
     Nodo(void){
+        dato = 0;
+        inferior = NULL;
         cout<<"Nodo construido..."<<endl;
     };
     ~Nodo(void){
@@ -17,11 +19,11 @@ public:
 int main(void){
     cout<<"Inicio del main"<<endl<<endl;
 
-    Nodo A, B, C, D;    //Se construyen Nodos con basura
+    Nodo A, B, C, D;    //Se construyen Nodos inicializados
     system("pause");
     system("cls");
 
-    cout<<"Nodos con contenido basura:"<<endl<<endl;
+    cout<<"Nodos con cero y NULL:"<<endl<<endl;
 
     cout<<"A.dato = "<<A.dato<<endl
         <<"A.inferior = "<<A.inferior<<endl<<endl;
