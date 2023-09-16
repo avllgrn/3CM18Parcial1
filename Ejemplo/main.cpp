@@ -21,56 +21,44 @@ public:
     };
 };
 
+class Pila{
+private:
+    Nodo* tope;
+public:
+    Pila(void){
+        tope=NULL;  //Pila inicialmente vacia
+    };
+    void push(int dato){
+        tope = new Nodo(dato, tope);   //Se construye Nodo dinamicamente
+    };
+    int pop(void){
+        Nodo* aux;
+        int d;
+        d = tope->dato;
+        aux = tope;
+        tope = tope->inferior;
+        delete aux;
+        return d;
+    };
+};
+
 int main(void){
     cout<<"Inicio del main"<<endl<<endl;
+    Pila P;
 
-    Nodo* tope=NULL;            //Pila vacia
-    Nodo* aux;
-
-    tope = new Nodo(3, tope);   //Se construye Nodo dinamicamente (push)
-    tope = new Nodo(5, tope);   //Se construye Nodo dinamicamente (push)
-    tope = new Nodo(7, tope);   //Se construye Nodo dinamicamente (push)
-    tope = new Nodo(-4, tope);  //Se construye Nodo dinamicamente (push)
+    P.push(3);  //Se inserta dato en Pila
+    P.push(5);  //Se inserta dato en Pila
+    P.push(7);  //Se inserta dato en Pila
+    P.push(-4); //Se inserta dato en Pila
     system("pause");
     system("cls");
 
     cout<<"Nodos con valor y direccion de otro NODO:"<<endl<<endl;
 
-    cout<<"tope = "<<tope<<endl
-        <<"tope->dato = "<<tope->dato<<endl
-        <<"tope->inferior = "<<tope->inferior<<endl;
-    //Se elimina nodo en el tope
-    aux=tope;
-    tope = tope->inferior;
-    delete aux;
-    cout<<endl<<endl;
-
-    cout<<"tope = "<<tope<<endl
-        <<"tope->dato = "<<tope->dato<<endl
-        <<"tope->inferior = "<<tope->inferior<<endl;
-    //Se elimina nodo en el tope
-    aux=tope;
-    tope = tope->inferior;
-    delete aux;
-    cout<<endl<<endl;
-
-    cout<<"tope = "<<tope<<endl
-        <<"tope->dato = "<<tope->dato<<endl
-        <<"tope->inferior = "<<tope->inferior<<endl;
-    //Se elimina nodo en el tope
-    aux=tope;
-    tope = tope->inferior;
-    delete aux;
-    cout<<endl<<endl;
-
-    cout<<"tope = "<<tope<<endl
-        <<"tope->dato = "<<tope->dato<<endl
-        <<"tope->inferior = "<<tope->inferior<<endl;
-    //Se elimina nodo en el tope
-    aux=tope;
-    tope = tope->inferior;
-    delete aux;
-    cout<<endl<<endl;
+    cout<<P.pop()<<endl<<endl;    //Se elimina nodo de la Pila
+    cout<<P.pop()<<endl<<endl;    //Se elimina nodo de la Pila
+    cout<<P.pop()<<endl<<endl;    //Se elimina nodo de la Pila
+    cout<<P.pop()<<endl<<endl;    //Se elimina nodo de la Pila
 
     cout<<"Fin del main"<<endl<<endl;//No quedo ningun nodo en memoria
 
