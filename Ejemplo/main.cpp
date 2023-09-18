@@ -2,53 +2,54 @@
 #include <stdlib.h>
 using namespace std;
 
-class NodoFloat{
-public:
-    float dato;
-    NodoFloat* inferior;
-    NodoFloat(void){
-        dato = 0;
-        inferior = NULL;
-        cout<<"NodoFloat construido..."<<endl;
-    };
-    NodoFloat(float d, NodoFloat* i){
-        dato = d;
-        inferior = i;
-        cout<<"NodoFloat construido..."<<endl;
-    };
-    ~NodoFloat(void){
-        cout<<"NodoFloat destruido..."<<endl;
-    };
-};
 
 class PilaFloat{
 private:
-    NodoFloat* tope;
+    //La clase solo existe dentro de PilaFloat (nadie fuera de PilaFloat puede usar esta clase Nodo)
+    class Nodo{
+    public:
+        float dato;
+        Nodo* inferior;
+        Nodo(void){
+            dato = 0.0;
+            inferior = NULL;
+            cout<<"Nodo construido..."<<endl;
+        };
+        Nodo(float d, Nodo* i){
+            dato = d;
+            inferior = i;
+            cout<<"Nodo construido..."<<endl;
+        };
+        ~Nodo(void){
+            cout<<"Nodo destruido..."<<endl;
+        };
+    };
+    Nodo* tope; //Una Pila solo tiene un apuntador al Nodo de hasta arriba de ella
 public:
     PilaFloat(void){
-        tope=NULL;  //PilaFloat inicialmente vacia
+        tope = NULL;  //PilaFloat inicialmente vacia
     };
     ~PilaFloat(void){
-        liberaPila();
+        liberaPila();   //Se manda liberar todos los nodos
     };
     void push(float dato){
-        tope = new NodoFloat(dato, tope);   //Se construye NodoFloat dinamicamente
+        tope = new Nodo(dato, tope);   //Se construye Nodo dinamicamente
     };
     float pop(void){
-        NodoFloat* aux;
+        Nodo* aux;
         float d;
         d = tope->dato;
-        aux = tope;
-        tope = tope->inferior;
-        delete aux;
+        aux = tope;                 //Se libera dinamicamente
+        tope = tope->inferior;      //la memoria solicitada
+        delete aux;                 //con new, en push
         return d;
     };
     bool estaVacia(void){
-        return tope == NULL;
+        return tope == NULL;        //Si tope tiene NULL, esta vacia
     };
     void liberaPila(void){
-        while(!estaVacia()){
-            cout<< pop() << endl;
+        while(!estaVacia()){        //Mientras haya nodos
+            cout<< pop() << endl;   //Libera cada nodo de la pila
         }
     };
 };
@@ -64,7 +65,7 @@ int main(void){
     system("pause");
     system("cls");
 
-    cout<<"Se libera la pila antes del fin del programa"<<endl<<endl;//No quedo ningun NodoFloat en memoria
+    cout<<"Se libera la pila antes del fin del programa"<<endl<<endl;//No quedo ningun Nodo en memoria
     PF.liberaPila();
     system("pause");
     system("cls");
@@ -78,5 +79,5 @@ int main(void){
     system("cls");
 
     cout<<"Fin del main. Despues, el destructor libera la memoria:"<<endl<<endl;
-    return 0;//No quedo ningun NodoFloat en memoria, despues del main
+    return 0;//No quedo ningun Nodo en memoria, despues del main
 }
