@@ -2,65 +2,81 @@
 #include <stdlib.h>
 using namespace std;
 
-class Nodo{
+class NodoFloat{
 public:
-    int dato;
-    Nodo* inferior;
-    Nodo(void){
+    float dato;
+    NodoFloat* inferior;
+    NodoFloat(void){
         dato = 0;
         inferior = NULL;
-        cout<<"Nodo construido..."<<endl;
+        cout<<"NodoFloat construido..."<<endl;
     };
-    Nodo(int d, Nodo* i){
+    NodoFloat(float d, NodoFloat* i){
         dato = d;
         inferior = i;
-        cout<<"Nodo construido..."<<endl;
+        cout<<"NodoFloat construido..."<<endl;
     };
-    ~Nodo(void){
-        cout<<"Nodo destruido..."<<endl;
+    ~NodoFloat(void){
+        cout<<"NodoFloat destruido..."<<endl;
     };
 };
 
-class Pila{
+class PilaFloat{
 private:
-    Nodo* tope;
+    NodoFloat* tope;
 public:
-    Pila(void){
-        tope=NULL;  //Pila inicialmente vacia
+    PilaFloat(void){
+        tope=NULL;  //PilaFloat inicialmente vacia
     };
-    void push(int dato){
-        tope = new Nodo(dato, tope);   //Se construye Nodo dinamicamente
+    ~PilaFloat(void){
+        liberaPila();
     };
-    int pop(void){
-        Nodo* aux;
-        int d;
+    void push(float dato){
+        tope = new NodoFloat(dato, tope);   //Se construye NodoFloat dinamicamente
+    };
+    float pop(void){
+        NodoFloat* aux;
+        float d;
         d = tope->dato;
         aux = tope;
         tope = tope->inferior;
         delete aux;
         return d;
     };
+    bool estaVacia(void){
+        return tope == NULL;
+    };
+    void liberaPila(void){
+        while(!estaVacia()){
+            cout<< pop() << endl;
+        }
+    };
 };
 
 int main(void){
     cout<<"Inicio del main"<<endl<<endl;
-    Pila P;
+    PilaFloat PF;
 
-    P.push(3);  //Se inserta dato en Pila
-    P.push(5);  //Se inserta dato en Pila
-    P.push(7);  //Se inserta dato en Pila
-    P.push(-4); //Se inserta dato en Pila
+    PF.push(3.4);  //Se inserta dato en PilaFloat
+    PF.push(5.6);  //Se inserta dato en PilaFloat
+    PF.push(7.8);  //Se inserta dato en PilaFloat
+    PF.push(-4.5); //Se inserta dato en PilaFloat
     system("pause");
     system("cls");
 
-    cout<<"Nodos con valor y direccion de otro NODO:"<<endl<<endl;
+    cout<<"Se libera la pila antes del fin del programa"<<endl<<endl;//No quedo ningun NodoFloat en memoria
+    PF.liberaPila();
+    system("pause");
+    system("cls");
 
-    cout<<P.pop()<<endl<<endl;    //Se elimina nodo de la Pila
-    cout<<P.pop()<<endl<<endl;    //Se elimina nodo de la Pila
-    cout<<P.pop()<<endl<<endl;    //Se elimina nodo de la Pila
-    cout<<P.pop()<<endl<<endl;    //Se elimina nodo de la Pila
+    cout<<"Se rellena nuevamente la pila antes del fin del programa"<<endl<<endl;
+    PF.push(33.44);  //Se inserta dato en PilaFloat
+    PF.push(55.66);  //Se inserta dato en PilaFloat
+    PF.push(77.88);  //Se inserta dato en PilaFloat
+    PF.push(-44.55); //Se inserta dato en PilaFloat
+    system("pause");
+    system("cls");
 
-    cout<<"Fin del main"<<endl<<endl;//No quedo ningun nodo en memoria
-
-    return 0;
+    cout<<"Fin del main. Despues, el destructor libera la memoria:"<<endl<<endl;
+    return 0;//No quedo ningun NodoFloat en memoria, despues del main
 }
