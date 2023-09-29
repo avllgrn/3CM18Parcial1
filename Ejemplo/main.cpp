@@ -3,18 +3,18 @@
 #include <time.h>
 using namespace std;
 
-class PilaChar{
+class PilaInt{
 private:
     class Nodo{
     public:
-        char dato;
+        int dato;
         Nodo* inferior;
         Nodo(void){
             dato = 0.0;
             inferior = NULL;
             //cout<<"Nodo construido..."<<endl;
         };
-        Nodo(char d, Nodo* i){
+        Nodo(int d, Nodo* i){
             dato = d;
             inferior = i;
             //cout<<"Nodo construido..."<<endl;
@@ -22,20 +22,21 @@ private:
         ~Nodo(void){
             //cout<<"Nodo destruido..."<<endl;
         };
-    };    Nodo* tope;
+    };
+    Nodo* tope;
 public:
-    PilaChar(void){
+    PilaInt(void){
         tope = NULL;
     };
-    ~PilaChar(void){
+    ~PilaInt(void){
         liberaPila();
     };
-    void push(char dato){
+    void push(int dato){
         tope = new Nodo(dato, tope);
     };
-    char pop(void){
+    int pop(void){
         Nodo* aux;
-        char d;
+        int d;
         d = tope->dato;
         aux = tope;
         tope = tope->inferior;
@@ -52,18 +53,20 @@ public:
     };
 };
 
-class ColaChar{
+
+
+class ColaInt{
 private:
     class Nodo{
     public:
-        char dato;
+        int dato;
         Nodo* detras;
         Nodo(void){
             dato = 0;
             detras = NULL;
             //cout<<"Nodo construido..."<<endl;
         };
-        Nodo(char dat, Nodo* det){
+        Nodo(int dat, Nodo* det){
             dato = dat;
             detras = det;
             //cout<<"Nodo construido..."<<endl;
@@ -75,14 +78,14 @@ private:
     Nodo* primero;
     Nodo* ultimo;
 public:
-    ColaChar(void){
+    ColaInt(void){
         primero = NULL;
         ultimo = NULL;
     };
-    ~ColaChar(void){
+    ~ColaInt(void){
         liberaCola();
     };
-    void push(char dato){
+    void push(int dato){
         if(estaVacia()){
             ultimo = new Nodo(dato,NULL);
             primero = ultimo;
@@ -92,8 +95,8 @@ public:
             ultimo = ultimo->detras;
         }
     };
-    char pop(void){
-        char dato;
+    int pop(void){
+        int dato;
         Nodo* aux;
         if(primero==ultimo && !estaVacia()){
             dato = primero->dato;
@@ -123,65 +126,44 @@ public:
     };
 };
 
-
-bool esNumerico(char x);
-bool esMayuscula(char x);
-bool esMinuscula(char x);
-bool esLetra(char x);
-bool esCacraterEspecial(char x);
-
 int main(void){
-    string Cadena;
-    PilaChar P;
-    ColaChar C;
-    char i,nCadena;
-    char c;
+    srand(time(NULL));
+    PilaInt P,POriginal,Aux;
+    ColaInt C;
+    int i,n;
+    int x;
 
-    cout<<"Ingresa tu cadena ";
-    getline(cin,Cadena);
-    nCadena = Cadena.size();
+    cout<<"Cuantos? ";cin>>n;
 
-    //Se genera una cola y una pila,
-    for(i=0; i<nCadena; i++){
-        c = Cadena.at(i);//a partir de cada caracter de la original;
-        if(!esCacraterEspecial(c)){//pero, solo con los caracteres no especiales
-            c = toupper(c);//y convertidos a mayusculas
-            C.push(c);
-            P.push(c);
-        }
+    for(i=0; i<n; i++){//Se genera una Pila con numeros aleatorios (y una copia de ella)
+        x = rand()%100;
+        P.push(x);
+        POriginal.push(x);
     }
-
-    //Se comparan todos y cada uno de los caracteres de la cola
-    //con todos y cada uno de los caracteres en la pila,
-    while(!C.estaVacia() && !P.estaVacia()){
-        if(C.pop() != P.pop())//a menos de que se encuentre uno diferente
-            break;
-    }
-
-    if(P.estaVacia())
-        cout<<"ES palindromo"<<endl;
-    else
-        cout<<"NO es palindromo"<<endl;
+    cout<<"POriginal"<<endl;
+    POriginal.liberaPila();
     cout<<endl<<endl;
-    system("pause");
-    system("cls");
 
-    cout<<"El destructor vacia la pila, dado el caso."<<endl<<endl;
+
+    while(!P.estaVacia()){//Se vacia la pila
+        x = P.pop();
+        if(x%2==0)//Los numeros pares se almacenan en una Cola
+            C.push(x);
+        else
+            Aux.push(x);//Los impares se almacenan en otra pila
+    }
+
+    while(!Aux.estaVacia())//Se reconstruye la original, ya sin numeros pares
+        P.push(Aux.pop());
+
+    cout<<"P"<<endl;
+    P.liberaPila();
+    cout<<endl<<endl;
+
+    cout<<"C"<<endl;
+    C.liberaCola();
+    cout<<endl<<endl;
+
+
     return 0;
-}
-
-bool esNumerico(char x){
-    return (x>=48 && x<=57);
-}
-bool esMayuscula(char x){
-    return (x>=65 && x<=90);
-}
-bool esMinuscula(char x){
-    return (x>=97 && x<=122);
-}
-bool esLetra(char x){
-    return (esMayuscula(x) || esMinuscula(x));
-}
-bool esCacraterEspecial(char x){
-    return (!esNumerico(x) && !esLetra(x));
 }
