@@ -1,20 +1,19 @@
 #include <iostream>
 #include <stdlib.h>
-#include <time.h>
 using namespace std;
 
-class PilaInt{
+class PilaChar{
 private:
     class Nodo{
     public:
-        int dato;
+        char dato;
         Nodo* inferior;
         Nodo(void){
             dato = 0.0;
             inferior = NULL;
             //cout<<"Nodo construido..."<<endl;
         };
-        Nodo(int d, Nodo* i){
+        Nodo(char d, Nodo* i){
             dato = d;
             inferior = i;
             //cout<<"Nodo construido..."<<endl;
@@ -24,18 +23,18 @@ private:
         };
     };    Nodo* tope;
 public:
-    PilaInt(void){
+    PilaChar(void){
         tope = NULL;
     };
-    ~PilaInt(void){
+    ~PilaChar(void){
         liberaPila();
     };
-    void push(int dato){
+    void push(char dato){
         tope = new Nodo(dato, tope);
     };
-    int pop(void){
+    char pop(void){
         Nodo* aux;
-        int d;
+        char d;
         d = tope->dato;
         aux = tope;
         tope = tope->inferior;
@@ -53,48 +52,32 @@ public:
 };
 
 int main(void){
-    srand(time(NULL));
-    PilaInt P1, P2, Aux;
-    int i,n,x;
+    string Cadena;
+    PilaChar P;
+    int i,nCadena;
 
-    cout<<"Ingresa n ";
-    cin>>n;
+    cout<<"Ingresa tu numero ";
+    getline(cin,Cadena);
+    nCadena = Cadena.size();
 
-    //Se rellena con n numeros aleatorios la pila original
-    for(i=0; i<n;i++)
-        P1.push(rand()%100);
+    //Se genera una pila,
+    for(i=0; i<nCadena; i++)
+        P.push(Cadena.at(i));//a partir de cada caracter numerico de la original;
 
-    //Se destruye la pila original en una auxiliar
-    while(!P1.estaVacia())
-        Aux.push(P1.pop());
+    //Se comparan todos y cada uno de los caracteres de la cadena
+    //con todos y cada uno de los caracteres en la pila,
+    for(i=0; i<nCadena; i++)
+        if(Cadena[i] != P.pop())//a menos de que se encuentre uno diferente
+            break;
 
-    //Se reconstruye la pila original y se genera su copia
-    while(!Aux.estaVacia()){
-        x = Aux.pop();
-        P1.push(x);
-        P2.push(x);
-    }
-
-    //Se muestran las tres pilas (destruyendolas)
-    system("cls");
-    cout<<"P1 -> ";
-    while(!P1.estaVacia())
-        cout<<"\t"<<P1.pop()<<endl;
-    cout<<endl;
-
-    cout<<"P2 -> ";
-    while(!P2.estaVacia())
-        cout<<"\t"<<P2.pop()<<endl;
-    cout<<endl;
-
-    cout<<"Aux -> ";
-    while(!Aux.estaVacia())
-        cout<<"\t"<<Aux.pop()<<endl;
-    cout<<endl;
-
-
-
+    if(P.estaVacia())
+        cout<<"ES capicua"<<endl;
+    else
+        cout<<"NO es capicua"<<endl;
     cout<<endl<<endl;
+    system("pause");
+    system("cls");
+    cout<<"El destructor vacia la pila, dado el caso."<<endl<<endl;
 
     return 0;
 }
