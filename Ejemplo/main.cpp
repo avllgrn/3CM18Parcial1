@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
+#include <time.h>
 using namespace std;
 
 class PilaInt{
@@ -52,24 +53,46 @@ public:
 };
 
 int main(void){
-    PilaInt P;
-    int n,x;
+    srand(time(NULL));
+    PilaInt P1, P2, Aux;
+    int i,n,x;
 
     cout<<"Ingresa n ";
     cin>>n;
-    x = n;
 
-    while(n>0){//La conversion se almacena en una Pila
-        P.push(n%2);
-        n = n/2;
+    //Se rellena con n numeros aleatorios la pila original
+    for(i=0; i<n;i++)
+        P1.push(rand()%100);
+
+    //Se destruye la pila original en una auxiliar
+    while(!P1.estaVacia())
+        Aux.push(P1.pop());
+
+    //Se reconstruye la pila original y se genera su copia
+    while(!Aux.estaVacia()){
+        x = Aux.pop();
+        P1.push(x);
+        P2.push(x);
     }
-    n = x;
 
-    cout<<endl<<endl
-        <<n<<" = ";
+    //Se muestran las tres pilas (destruyendolas)
+    system("cls");
+    cout<<"P1 -> ";
+    while(!P1.estaVacia())
+        cout<<"\t"<<P1.pop()<<endl;
+    cout<<endl;
 
-    while(!P.estaVacia())//La conversion se muestra, vaciando la Pila
-        cout<<P.pop();
+    cout<<"P2 -> ";
+    while(!P2.estaVacia())
+        cout<<"\t"<<P2.pop()<<endl;
+    cout<<endl;
+
+    cout<<"Aux -> ";
+    while(!Aux.estaVacia())
+        cout<<"\t"<<Aux.pop()<<endl;
+    cout<<endl;
+
+
 
     cout<<endl<<endl;
 
